@@ -1,0 +1,35 @@
+// Version: 1.0.0
+type ContactInquiry__977746106 =
+  {
+    category : InquiryCategory__471462881;
+    email : Text;
+    id : Nat;
+    message : Text;
+    name : Text;
+    submittedAt : Int
+  };
+type InquiryCategory__471462881 = {#BulkOrders; #Collaborations; #Retail};
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Testimonial__370816955 =
+  {id : Nat; name : Text; rating : Nat; text : Text};
+actor {
+  stable var _nextInquiryId : Nat;
+  stable var _nextTestimonialId : Nat;
+  stable var _seeded : Bool;
+  stable inquiries :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?ContactInquiry__977746106]];
+      var elementIndex : Nat__490723111
+    };
+  stable nextInquiryId : {var value : Nat};
+  stable nextTestimonialId : {var value : Nat};
+  stable seeded : {var value : Bool};
+  stable testimonials :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Testimonial__370816955]];
+      var elementIndex : Nat__490723111
+    }
+};

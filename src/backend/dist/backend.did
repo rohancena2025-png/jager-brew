@@ -1,0 +1,28 @@
+type Testimonial = 
+ record {
+   id: nat;
+   name: text;
+   rating: nat;
+   "text": text;
+ };
+type InquiryCategory = 
+ variant {
+   BulkOrders;
+   Collaborations;
+   Retail;
+ };
+type ContactInquiry = 
+ record {
+   category: InquiryCategory;
+   email: text;
+   id: nat;
+   message: text;
+   name: text;
+   submittedAt: int;
+ };
+service : {
+  listInquiries: () -> (vec ContactInquiry) query;
+  listTestimonials: () -> (vec Testimonial) query;
+  submitInquiry: (name: text, email: text, message: text, category:
+   InquiryCategory) -> (ContactInquiry);
+}
